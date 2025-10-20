@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost & Found - Login</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="login-card">
-            <h1>Lost & Found System</h1>
+            <h1>🔍 Lost & Found</h1>
             <p>Please login to continue</p>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" required>
+                    <label for="username">👤 Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
+                    <label for="password">🔒 Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
-            <div id="errorMessage" class="error-message"></div>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
         </div>
     </div>
     <script src="script.js"></script>

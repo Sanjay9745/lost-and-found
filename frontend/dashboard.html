@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost & Found - Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Lost & Found Dashboard</h1>
-        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        <h1>🔍 Lost & Found Dashboard</h1>
+        <button id="logoutBtn" class="btn btn-secondary">🚪 Logout</button>
     </header>
 
     <nav>
-        <button id="allItemsBtn" class="nav-btn active">All Items</button>
-        <button id="lostItemsBtn" class="nav-btn">Lost Items</button>
-        <button id="foundItemsBtn" class="nav-btn">Found Items</button>
-        <button id="reportBtn" class="nav-btn">Report Lost Item</button>
+        <button id="allItemsBtn" class="nav-btn active">📋 All Items</button>
+        <button id="lostItemsBtn" class="nav-btn">❌ Lost Items</button>
+        <button id="foundItemsBtn" class="nav-btn">✅ Found Items</button>
+        <button id="reportBtn" class="nav-btn">➕ Report Lost Item</button>
     </nav>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search by item name, location, or student name...">
+        <input type="text" id="searchInput" placeholder="🔎 Search by item name, location, or student name...">
         <button id="searchBtn" class="btn btn-primary">Search</button>
     </div>
 
@@ -32,29 +33,29 @@
     <div id="reportModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Report Lost Item</h2>
+            <h2>📝 Report Lost Item</h2>
             <form id="reportForm">
                 <div class="form-group">
-                    <label for="itemName">Item Name</label>
-                    <input type="text" id="itemName" required>
+                    <label for="itemName">📦 Item Name</label>
+                    <input type="text" id="itemName" placeholder="e.g., Blue Backpack" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" required></textarea>
+                    <label for="description">📄 Description</label>
+                    <textarea id="description" placeholder="Provide detailed description..." required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" required>
+                    <label for="location">📍 Location</label>
+                    <input type="text" id="location" placeholder="e.g., Library 2nd Floor" required>
                 </div>
                 <div class="form-group">
-                    <label for="studentName">Student Name</label>
-                    <input type="text" id="studentName" required>
+                    <label for="studentName">👤 Student Name</label>
+                    <input type="text" id="studentName" placeholder="Enter student name" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactInfo">Contact Info</label>
-                    <input type="text" id="contactInfo" required>
+                    <label for="contactInfo">📞 Contact Info</label>
+                    <input type="text" id="contactInfo" placeholder="Email or phone number" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Report Item</button>
+                <button type="submit" class="btn btn-primary">Submit Report</button>
             </form>
         </div>
     </div>
@@ -63,18 +64,18 @@
     <div id="foundModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Mark as Found</h2>
+            <h2>✅ Mark as Found</h2>
             <form id="foundForm">
                 <input type="hidden" id="foundItemId">
                 <div class="form-group">
-                    <label for="foundBy">Found By</label>
-                    <input type="text" id="foundBy" required>
+                    <label for="foundBy">👤 Found By</label>
+                    <input type="text" id="foundBy" placeholder="Name of person who found the item" required>
                 </div>
                 <div class="form-group">
-                    <label for="remarks">Remarks</label>
-                    <textarea id="remarks"></textarea>
+                    <label for="remarks">💬 Remarks</label>
+                    <textarea id="remarks" placeholder="Additional notes (optional)"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Mark as Found</button>
+                <button type="submit" class="btn btn-success">Mark as Found</button>
             </form>
         </div>
     </div>

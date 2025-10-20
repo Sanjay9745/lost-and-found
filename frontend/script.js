@@ -148,20 +148,37 @@ function createItemCard(item) {
 
     const statusText = item.found ? 'Found' : 'Lost';
     const statusClass = item.found ? 'found' : 'lost';
+    const statusIcon = item.found ? '✅' : '❌';
+
+    const reportDate = new Date(item.reportedDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    const foundDate = item.foundDate ? new Date(item.foundDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    }) : '';
 
     card.innerHTML = `
         <h3>${item.itemName}</h3>
-        <p><strong>Description:</strong> ${item.description}</p>
-        <p><strong>Location:</strong> ${item.location}</p>
-        <p><strong>Student:</strong> ${item.studentName}</p>
-        <p><strong>Contact:</strong> ${item.contactInfo}</p>
-        <p><strong>Reported:</strong> ${new Date(item.reportedDate).toLocaleDateString()}</p>
-        ${item.found ? `<p><strong>Found Date:</strong> ${new Date(item.foundDate).toLocaleDateString()}</p>` : ''}
-        ${item.found ? `<p><strong>Found By:</strong> ${item.foundBy}</p>` : ''}
-        ${item.remarks ? `<p><strong>Remarks:</strong> ${item.remarks}</p>` : ''}
-        <span class="status ${statusClass}">${statusText}</span>
+        <p><strong>📄 Description:</strong> ${item.description}</p>
+        <p><strong>📍 Location:</strong> ${item.location}</p>
+        <p><strong>👤 Student:</strong> ${item.studentName}</p>
+        <p><strong>📞 Contact:</strong> ${item.contactInfo}</p>
+        <p><strong>🕐 Reported:</strong> ${reportDate}</p>
+        ${item.found ? `<p><strong>🕐 Found Date:</strong> ${foundDate}</p>` : ''}
+        ${item.found ? `<p><strong>👤 Found By:</strong> ${item.foundBy}</p>` : ''}
+        ${item.remarks ? `<p><strong>💬 Remarks:</strong> ${item.remarks}</p>` : ''}
+        <span class="status ${statusClass}">${statusIcon} ${statusText}</span>
         <div class="actions">
-            ${!item.found ? `<button class="btn btn-primary btn-small" onclick="openFoundModal(${item.id})">Mark as Found</button>` : ''}
+            ${!item.found ? `<button class="btn btn-success btn-small" onclick="openFoundModal(${item.id})">✅ Mark as Found</button>` : ''}
         </div>
     `;
 
@@ -173,7 +190,13 @@ function displayItems(items) {
     container.innerHTML = '';
 
     if (items.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #666; font-size: 1.2em;">No items found</p>';
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column: 1/-1;">
+                <div style="font-size: 64px; margin-bottom: 20px;">📭</div>
+                <h2 style="color: var(--text-primary); margin-bottom: 10px;">No items found</h2>
+                <p style="font-size: 1.1em;">Try adjusting your search or add a new item</p>
+            </div>
+        `;
         return;
     }
 
@@ -310,6 +333,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function loadItems(endpoint) {
+    const container = document.getElementById('itemsContainer');
+    container.innerHTML = `
+        <div class="loading" style="grid-column: 1/-1;">
+            <div style="font-size: 48px; margin-bottom: 20px;">⏳</div>
+            <h3>Loading items...</h3>
+        </div>
+    `;
     const items = await fetchItems(endpoint);
     displayItems(items);
 }
