@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lost & Found Dashboard</h1>
+        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+    </header>
+
+    <nav>
+        <button id="allItemsBtn" class="nav-btn active">All Items</button>
+        <button id="lostItemsBtn" class="nav-btn">Lost Items</button>
+        <button id="foundItemsBtn" class="nav-btn">Found Items</button>
+        <button id="reportBtn" class="nav-btn">Report Lost Item</button>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by item name, location, or student name...">
+        <button id="searchBtn" class="btn btn-primary">Search</button>
+    </div>
+
+    <div id="itemsContainer" class="items-container">
+        <!-- Items will be loaded here -->
+    </div>
+
+    <!-- Report Lost Item Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Report Lost Item</h2>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactInfo">Contact Info</label>
+                    <input type="text" id="contactInfo" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Report Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mark as Found Modal -->
+    <div id="foundModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Mark as Found</h2>
+            <form id="foundForm">
+                <input type="hidden" id="foundItemId">
+                <div class="form-group">
+                    <label for="foundBy">Found By</label>
+                    <input type="text" id="foundBy" required>
+                </div>
+                <div class="form-group">
+                    <label for="remarks">Remarks</label>
+                    <textarea id="remarks"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Mark as Found</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -78,7 +78,30 @@ lost-and-found/
 - Java 17 or higher
 - Maven 3.6 or higher
 
-### Step 1: Start the Backend Server
+### Option 1: Using Docker (Recommended) 🐳
+
+**Quick Start:**
+```bash
+# Using the helper script (Windows)
+docker-start.bat
+
+# Or manually
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the application
+docker-compose down
+```
+
+The application will be available at `http://localhost:8080`
+
+See [DOCKER.md](DOCKER.md) for detailed Docker instructions.
+
+### Option 2: Running Locally
+
+#### Step 1: Start the Backend Server
 
 ```bash
 # Navigate to project directory
@@ -90,7 +113,7 @@ mvn spring-boot:run
 
 The backend server will start at `http://localhost:8080`
 
-### Step 2: Start the Swing Frontend
+#### Step 2: Start the Swing Frontend
 
 In a separate terminal:
 
